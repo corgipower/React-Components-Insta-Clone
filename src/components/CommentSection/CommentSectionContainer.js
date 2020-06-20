@@ -12,7 +12,7 @@ const CommentSection = props => {
     e.preventDefault();
     let newComment = {
       username: 'Liz',
-      text: txt
+      text: txt //I don't know why this comes up as undefined. If I hard code a string, it'll display that.
     }
     setComments([...comments, newComment]);
   }
