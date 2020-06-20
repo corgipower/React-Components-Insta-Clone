@@ -6,11 +6,24 @@ import "./Comment.css";
 
 const CommentSection = props => {
   // Add state for the comments
+  const [comments, setComments] = useState(props.comments);
+  console.log('CommentSection', comments);
+  const submitComment = (e, txt) => {
+    e.preventDefault();
+    let newComment = {
+      username: 'Liz',
+      text: txt //I don't know why this comes up as undefined. If I hard code a string, it'll display that.
+    }
+    setComments([...comments, newComment]);
+  }
 
   return (
     <div>
       {/* map through the comments data and return the Comment component */}
-      <CommentInput />
+      {comments.map(c => (
+        <Comment key={c.username} comment={c} />
+      ))}
+      <CommentInput submitComment={submitComment} comments={comments} />
     </div>
   );
 };
